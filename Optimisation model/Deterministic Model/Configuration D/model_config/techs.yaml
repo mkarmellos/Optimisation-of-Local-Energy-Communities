@@ -1,0 +1,160 @@
+##
+# TECHNOLOGY DEFINITIONS
+##
+templates:
+# --8<-- [start:transmission-templates]
+  central_node_building:
+    name: "EC distribution"
+    color: "#6783E3"
+    base_tech: transmission
+    carrier_in: Electricity
+    carrier_out: Electricity
+    flow_out_eff: 1
+    one_way: true
+    
+# --8<-- [end:transmission-templates]
+
+techs:
+  ##-GRID SUPPLY Residential-##
+  # --8<-- [start:supply]
+  Grid_supply:
+    name: "Grid suppply"
+    color: "#6499c8"
+    base_tech: supply
+    carrier_out: Electricity
+    source_use_max: .inf
+    lifetime: 30
+    
+  ##-Renewables-##
+  # --8<-- [start:PV_Residential]
+  Solar_PV:
+    name: "Solar_PV_gen"
+    color: '#FFA500'
+    base_tech: supply
+    carrier_out: Electricity
+    carrier_export: Electricity
+    source_unit: per_cap
+    area_use_per_flow_cap: 5 # 5m2 of panels needed to fit 1kWp of panels
+    flow_out_parasitic_eff: 0.90 # inverter losses
+    #area_use_max: 1500
+    lifetime: 30
+    cost_flow_cap:
+      data: 598 # cost per kW
+      index: monetary
+      dims: costs
+    cost_export:
+      data: -0.11 # cost per kWh
+      index: monetary
+      dims: costs
+
+  # Storage
+  # --8<-- [start:battery]
+  Battery:
+    name: "Battery storage"
+    color: "#fd8afd"
+    base_tech: storage
+    cap_method: integer
+    carrier_in: Electricity
+    carrier_out: Electricity
+    flow_cap_max: .inf
+    storage_cap_max: .inf
+    flow_cap_per_storage_cap_max: 0.5
+    flow_cap_per_storage_cap_min: 0.25
+    flow_out_eff: 0.95
+    flow_in_eff: 0.95
+#    area_use_per_flow_cap: 2 # 2m2 per 1kWp of batteries  https://nenpower.com/blog/how-much-land-does-1-mw-of-battery-energy-storage-occupy/ https://pubs.rsc.org/en/content/articlehtml/2023/ya/d3ya00208j
+    storage_loss: 0 # No loss over time assumed
+    lifetime: 15
+    force_async_flow: True
+    cost_storage_cap:
+      data: 285 # cost per kWh
+      index: monetary
+      dims: costs
+    cost_om_annual:
+      data: 6.27
+      index: monetary
+      dims: costs
+  # --8<-- [end:battery]
+  
+  
+  EV_battery:
+    name: "Electric vehicle battery"
+    color: "#8a92fd"
+    cap_method: integer
+    base_tech: storage
+    carrier_in: EV_electricity
+    carrier_out: EV_electricity 
+    flow_cap_min: 100
+    flow_cap_max: 100 # typical power of a mid size ev car
+    storage_cap_max: 60
+    storage_cap_min: 60
+    storage_discharge_depth: 0.2
+    force_async_flow: True
+    flow_out_eff: 0.94
+    flow_in_eff: 0.94
+    storage_initial: 0.5 # initial assumption of battery charge TYNDP
+    storage_loss: 0 # No loss over time assumed
+    lifetime: 15
+
+  EV_charger:
+    name: "Electric vehicle charger"
+    color: "#af5fba"
+    base_tech: conversion
+    carrier_in: Electricity
+    carrier_out: EV_electricity
+    flow_cap_min: 7.4 # kW charger capacity for residential houses
+    flow_cap_max: 7.4 # kW charger capacity for residential houses
+    lifetime: 15
+    cost_flow_out: 
+      data: 0.03 # EUR per kWh output (use of system charge)
+      index: monetary
+      dims: costs
+      
+  ##-DEMAND-##
+  EV_electricity_demand:
+    name: "Electric vehicle demand"
+    color: "#9c54fb"
+    base_tech: demand
+    carrier_in: EV_electricity
+    
+  Electricity_demand:
+    name: "Electrical demand"
+    color: "#09090a"
+    base_tech: demand
+    carrier_in: Electricity
+  
+ ##-DISTRIBUTION-##
+  # --8<-- [start:transmission]
+
+  T_to_R1:
+    link_from: T
+    link_to: R1
+    template: central_node_building
+  T_to_R2:
+    link_from: T
+    link_to: R2
+    template: central_node_building
+  T_to_R3:
+    link_from: T
+    link_to: R3
+    template: central_node_building
+  T_to_R4:
+    link_from: T
+    link_to: R4
+    template: central_node_building
+  T_to_R5:
+    link_from: T
+    link_to: R5
+    template: central_node_building
+  T_to_R6:
+    link_from: T
+    link_to: R6
+    template: central_node_building
+  T_to_C1:
+    link_from: T
+    link_to: C1
+    template: central_node_building
+  T_to_C2:
+    link_from: T
+    link_to: C2
+    template: central_node_building

@@ -1,0 +1,128 @@
+nodes:
+  R1:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2652 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Solar_PV:
+        flow_cap_max: 10.4 # technical limit for single-phase houses
+      Battery:
+      Electricity_demand:
+      EV_charger:
+      EV_battery:
+      EV_electricity_demand:
+    available_area: 30
+    latitude: 35.065086
+    longitude: 33.390933
+    
+  R2:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2652 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Solar_PV:
+        flow_cap_max: 10.4 # technical limit for single-phase houses
+      Battery:
+      Electricity_demand:
+      EV_charger:
+      EV_battery:
+      EV_electricity_demand:
+    available_area: 25
+    latitude: 35.065332
+    longitude:  33.390445
+
+  R3:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2652 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Solar_PV:
+        flow_cap_max: 10.4 # technical limit for single-phase houses
+      Battery:
+      Electricity_demand:
+    available_area: 15
+    latitude: 35.065350
+    longitude: 33.390681
+
+  R4:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2652 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Electricity_demand:
+      Solar_PV:
+        flow_cap_max: 10.4 # technical limit for single-phase houses
+      Battery:
+    available_area: 10
+    latitude: 35.065266
+    longitude: 33.390954
+
+  R5:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2652 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Electricity_demand:
+      Battery:
+      Solar_PV:
+        flow_cap_max: 10.4 # technical limit for single-phase houses
+    available_area: 0
+    latitude: 35.065262
+    longitude: 33.391099
+    
+  R6:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2652 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Electricity_demand:
+      Battery:
+      Solar_PV:
+        flow_cap_max: 10.4 # technical limit for single-phase houses
+    available_area: 25      
+    latitude: 35.065117
+    longitude:  33.390697
+
+# Commercial Buildings  
+
+  C1:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2664 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Electricity_demand:
+      Battery:
+      Solar_PV:
+        flow_cap_max: 100 # technical limit
+    available_area: 100      
+    latitude: 35.065207 
+    longitude: 33.391576    
+
+  C2:
+    techs:
+      Grid_supply:
+        cost_flow_in:
+          data: 0.2664 #  residential electricity tariff https://www.eac.com.cy/EL/RegulatedActivities/Supply/Documents/GR%20%CE%A0%CE%B1%CF%81%CE%AC%CE%B4%CE%B5%CE%B9%CE%B3%CE%BC%CE%B1%20%CE%A5%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CE%BC%CE%BF%CF%8D%20%CF%84%CE%B7%CF%82%20%CE%9F%CE%BB%CE%B9%CE%BA%CE%AE%CF%82%20%CE%A4%CE%B9%CE%BC%CE%AE%CF%82%202025%20%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC.pdf
+          index: monetary
+          dims: costs
+      Electricity_demand:
+      Battery:
+      Solar_PV:
+        flow_cap_max: 100 # technical limit
+    available_area: 90         
+    latitude: 35.065031
+    longitude: 33.391453
