@@ -1,0 +1,17 @@
+parameters:
+  flow_out_relative_per_ts:
+    description: The relative quantity of flow capacity used to limit generator outflow in each timestep.
+    default: 1
+    unit: $\frac{\text{energy}}{\text{power}}$.
+    
+constraints:
+  max_time_varying_flow_out_cap:
+    description: >
+      Limit flow out in each hour according to a time varying fractional limit
+      that is multiplied by the technology flow cap. 
+    foreach: [techs, nodes, carriers, timesteps]
+    where: "flow_out_relative_per_ts"
+    equations:
+      - expression: >
+          flow_out <=
+          flow_out_relative_per_ts * flow_cap * flow_out_parasitic_eff

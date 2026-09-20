@@ -1,0 +1,76 @@
+# --8<-- [start:import]
+import: # Import other files from paths relative to this file, or absolute paths
+  - "model_config/techs.yaml"
+  - "model_config/locations.yaml"
+  #- "scenarios.yaml"
+# --8<-- [end:import]
+
+# --8<-- [start:config]
+config:
+  init:
+    name: Cyprus EC Model Scenario 1
+    # What version of Calliope this model is intended for
+    calliope_version: 0.7.0
+    # Time series data path - can either be a path relative to this file, or an absolute path
+    #time_subset: ["2021-01-01", "2021-12-31"] # Subset of timesteps
+    time_cluster: cluster_days_param
+    broadcast_input_data: true  # allow single indexed parameter data entries to be broadcast across all index items, if there are multiple entries.
+    math_paths:
+      flow_time_varying_out: "flow_time_varying_out.yaml"
+      demand_share_ev: "demand_share_per_timestep_decision.yaml"
+      milp: "milp.yaml"
+    extra_math: [flow_time_varying_out, demand_share_ev, milp]
+    mode: base # Choices: base, operate, spores
+    
+  build:
+    ensure_feasibility: false # Switching on unmet demand
+
+  solve:
+    solver: gurobi
+    solver_options: { mipgap: 0.05 }
+
+# --8<-- [end:config]
+
+# --8<-- [start:parameters]
+data_definitions:
+  objective_cost_weights:
+    data: 1
+    index: monetary
+    dims: costs
+  # `bigM` sets the scale of unmet demand, which cannot be too high, otherwise the optimisation will not converge
+  bigM: 1e6
+  cost_interest_rate:
+    data: 0.085
+    index: monetary
+    dims: costs
+  demand_share_limit:
+    data: 1
+    index: EV_electricity_demand
+    dims: techs
+  decide_demand_share:
+    data: EV_electricity_demand
+    index: EV_battery
+    dims: techs
+# --8<-- [end: parameters]
+
+# --8<-- [start:data-tables]
+data_tables:
+  demand:
+    data: data_tables/demand.csv
+    rows: timesteps
+    columns: [techs, nodes]
+    add_dims:
+      parameters: sink_use_equals
+  cluster_days:
+    data: data_tables/cluster_days.csv
+    rows: timesteps
+    add_dims:
+      parameters: cluster_days_param
+  ev_charger_min:
+    data: data_tables/Availability.csv
+    rows: timesteps
+    columns: nodes
+    add_dims:
+      techs: EV_charger
+      parameters: flow_out_relative_per_ts
+# --8<-- [end:data-tables]
