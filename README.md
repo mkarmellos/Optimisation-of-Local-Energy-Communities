@@ -6,7 +6,7 @@ This is a repository with a Calliope model for the optimal design of Local Energ
   - Configuration D: District configuration where a central PV park is installed at a plot to serve the local energy community
   - Configuration E: It is assumed that energy generation and storage technologies can be installed at buildings, and at a nearby plot acting as central node that allows users to share energy virtually
 
-The model is based on the [Calliope energy modelling framework](https://github.com/calliope-project/calliope). To install and run Calliope follow the instructions in the documentation.
+The model is based on the [Calliope energy modelling framework](https://github.com/calliope-project/calliope) and has the same license (Apache 2.0). To install and run Calliope follow the instructions in the documentation.
 
 The repository has the following structure:
 - Datasets
