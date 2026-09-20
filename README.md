@@ -11,7 +11,6 @@ The model is based on the [Calliope energy modelling framework](https://github.c
 The repository has the following structure:
 - Datasets
   - Loads (including the code to generate synthetic loads if needed)
-  - CY Ramp Results for the calculation of EV data
   - Energy modelling data (all data required for the optimisation model and the code to generate typical days)
 - Optimisation model
   - Deterministic model
