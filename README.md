@@ -21,7 +21,6 @@ The repository has the following structure:
       - A yaml file called model_scen which provides the main model file for each configuration
       - A set of yaml files containing additional math required by the model
   - Uncertainty model
-    - Files:
     - A script called Calliope_script_model_run_MC.py that the user can use to run Monte Carlo simulations. Within the script the user can define the key parameters and the probability distributions.
     - A script called Results_process_MC.py that the user can use to generate a NetCDF file with all available results after 1000 simulations and will be used for postprocessing
     - Files:
