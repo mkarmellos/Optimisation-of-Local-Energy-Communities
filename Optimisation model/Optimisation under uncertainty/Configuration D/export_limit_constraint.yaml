@@ -1,0 +1,22 @@
+# title: Export limitation to avoid curtailment
+#
+# description: |
+#     Set a new parameter that represents a limit imposed by DSO to stop exports
+#
+#     New indexed parameters:
+#
+#     - `export_limit_t`
+# ---
+
+parameters:
+  export_limit_t:
+    description: A binary parameter that represents availability for export
+    default: 1
+    unit: unitless.
+    
+constraints:
+  export_limit:
+    foreach: [nodes, techs, carriers, timesteps]
+    where: "flow_export"
+    equations:
+      - expression: flow_export <= bigM * export_limit_t

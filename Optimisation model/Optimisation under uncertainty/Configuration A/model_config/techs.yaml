@@ -1,0 +1,112 @@
+##
+# TECHNOLOGY DEFINITIONS
+##
+
+techs:
+  ##-GRID SUPPLY Residential-##
+  # --8<-- [start:supply]
+  Grid_supply:
+    name: "Grid suppply"
+    color: "#6499c8"
+    base_tech: supply
+    carrier_out: Electricity
+    source_use_max: .inf
+    lifetime: 30
+    
+  ##-Renewables-##
+  # --8<-- [start:PV_Residential]
+  Solar_PV_gen:
+    name: "Solar_PV_gen"
+    color: '#FFA500'
+    base_tech: supply
+    carrier_out: Solar_electricity
+    source_unit: per_cap
+    area_use_per_flow_cap: 5 # 5m2 of panels needed to fit 1kWp of panels
+    flow_out_parasitic_eff: 0.90 # inverter losses
+    #area_use_max: 1500
+    lifetime: 30
+    cost_flow_cap:
+      data: 598 # cost per kW
+      index: monetary
+      dims: costs
+  
+  EC_Solar_PV_supply:
+    name: "Solar_PV_supply"
+    base_tech: conversion
+    carrier_in: Solar_electricity
+    carrier_out: Electricity  
+    carrier_export: Electricity
+    color: '#fdc153'
+    cost_export:
+      data: -0.11 # cost per kWh
+      index: monetary
+      dims: costs
+  # --8<-- [end:PV_Residential]
+
+  # Storage
+  # --8<-- [start:battery]
+  Battery:
+    name: "Battery storage"
+    color: "#fd8afd"
+    base_tech: storage
+    carrier_in: Electricity
+    carrier_out: Electricity
+    flow_cap_max: .inf
+    storage_cap_max: .inf
+    flow_cap_per_storage_cap_min: 0.25
+    flow_out_eff: 0.95
+    flow_in_eff: 0.95
+#    area_use_per_flow_cap: 2 # 2m2 per 1kWp of batteries  https://nenpower.com/blog/how-much-land-does-1-mw-of-battery-energy-storage-occupy/ https://pubs.rsc.org/en/content/articlehtml/2023/ya/d3ya00208j
+    storage_loss: 0 # No loss over time assumed
+    lifetime: 15
+    cost_storage_cap:
+      data: 793 # cost per kWh
+      index: monetary
+      dims: costs
+  # --8<-- [end:battery]
+  
+  EV_battery:
+    name: "Electric vehicle battery"
+    color: "#8a92fd"
+    cap_method: integer
+    base_tech: storage
+    carrier_in: EV_electricity
+    carrier_out: EV_electricity 
+    flow_cap_min: 100
+    flow_cap_max: 100 # typical power of a mid size ev car
+    storage_cap_max: 60
+    storage_cap_min: 60
+    storage_discharge_depth: 0.2
+    force_async_flow: True
+    flow_out_eff: 0.94
+    flow_in_eff: 0.94
+    storage_initial: 0.5 # initial assumption of battery charge TYNDP
+    storage_loss: 0 # No loss over time assumed
+    lifetime: 15
+
+  EV_charger:
+    name: "Electric vehicle charger"
+    color: "#af5fba"
+    base_tech: conversion
+    carrier_in: Electricity
+    carrier_out: EV_electricity
+    flow_cap_min: 7.4 # kW charger capacity for residential houses
+    flow_cap_max: 7.4 # kW charger capacity for residential houses
+    lifetime: 15
+    cost_flow_out: 
+      data: 0.03 # EUR per kWh output (use of system charge)
+      index: monetary
+      dims: costs
+      
+  ##-DEMAND-##
+  EV_electricity_demand:
+    name: "Electric vehicle demand"
+    color: "#9c54fb"
+    base_tech: demand
+    carrier_in: EV_electricity
+    
+  Electricity_demand:
+    name: "Electrical demand"
+    color: "#09090a"
+    base_tech: demand
+    carrier_in: Electricity
